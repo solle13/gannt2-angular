@@ -1,0 +1,223 @@
+.container-gantt{
+    border: solid 1px #ccc;
+    background: white;
+    border-radius: 4px;
+    min-height: 210px !important;
+  }
+
+  .scrollContainer{
+      width: calc(100vw - 250px);
+      overflow: scroll;
+    overflow-y: hidden;
+  }
+  
+  .listItems{
+    height: 35px;
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    background: white;
+    font-size: 14px;
+    position: relative;
+  }
+  
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .listItems:last-child {
+    /* border: none; */
+  }
+  
+  .container-gantt.cdk-drop-list-dragging .listItems:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .tootlip-gantt{
+    position: absolute;
+    min-width: 350px;
+    font-size: 12px;
+    font-size: 12px;
+    opacity: 0;
+    transition: 0.3s;
+    right: 0;
+    bottom: 30px;
+    padding: 10px;
+    background-color: #FFF;
+    color: #1C2833;
+    display: flex;
+    z-index: 10;
+    flex-direction: column;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+  }
+  .tootlip-gantt-view{
+    position: absolute;
+    min-width: 350px;
+    font-size: 12px;
+    opacity: 1;
+    right: 0;
+    bottom: 30px;
+    padding: 10px;
+    background-color: #FFF;
+    color: #1C2833;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    pointer-events: none;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .nameItem{
+      width: 175px;
+      height: 100%;
+      border-right:1px solid #ccc;
+      display: flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px 0 0;
+  }
+
+  .divider{
+      display: flex;
+      position: relative;
+      font-size:12px;
+      font-weight: 600;
+      position: relative;
+      width: 100%;
+      margin: 0 0 25px 0;
+      height: 35px;
+  }
+
+  .item-div{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 35px;
+      position: absolute;
+  }
+
+  .container-bar-gantt{
+      width: 150px;
+      min-width: 150px;
+      max-width: 150px;
+    height: 80%;
+    border-radius: 5px;
+    display: flex;
+    position: relative;
+  }
+
+  .bar-gantt{
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+  }
+
+  .bar-gantt-main{
+      min-width: 150px;
+      display: flex;
+        height: 100%;
+        align-items: center;
+        position: relative;
+  }
+
+  .lineToday{
+      width: 2px;
+      border: 1px solid #17202A;
+      position: absolute;
+      top: -10px;
+      z-index: 2;
+  }
+
+  .cont-lineToday{
+    position: relative;
+  }
+
+  .dateToday{
+    width: 70px;
+    min-width: 70px;
+    max-width: 70px;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    top: -25px;
+  }
+
+  .numeroOsBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      color: #FFF;
+      font-weight: 700;
+      font-size: 12px;
+  }
+
+  .nameResponsable{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 150px;
+  }
+
+
+
+  .animatedTimeline3 {
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-animation: flashTimeline3 5s infinite; 
+    animation: flashTimeline3 5s infinite; 
+   }
+   @-webkit-keyframes flashTimeline3 {
+    0%, 50%, 100% {
+    opacity: 1;
+    }
+   25%, 75% {
+    opacity: 0.3;
+    }
+   }
+   @keyframes flashTimeline3 {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+   25%, 75% {
+    opacity: 0.3;
+    }
+   }
+
+
+   .container-name{
+    display: flex;
+    flex-direction: column;
+    text-overflow: ellipsis;
+    width: 155px;
+   }

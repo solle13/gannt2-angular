@@ -1,0 +1,68 @@
+<div class="scrollContainer" *ngIf="isDragAndDrop">
+    <div id="containerGantt" class="container-gantt"  cdkDropListGroup>
+      <div class="listItems" *ngFor="let item of items; let i = index"  >
+        
+        <div class="nameItem">
+          <div class="icon-div-user-foto-icon">
+            <img [src]="item.urlFotografia && item.urlFotografia !== null ? item.urlFotografia : user_photo_default " [style.border-radius]="'100%'" width="100%" height="100%" alt="photo_user">
+          </div>
+          <div class="container-name">
+            {{item.name}} <span class="nameResponsable">{{item.responsable}}</span>
+          </div>
+        </div>
+        <div class="bar-gantt-main" [style.min-width]="((item.actividades.length + 1) * 150) + 'px'" [id]="'list-'+(i+1)" [cdkDropListData]="item.actividades" (click)="selectedBar(item)" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListConnectedTo]="getListConnect('list-'+(i+1))" (cdkDropListDropped)="drop2($event)">
+          <div [ngClass]="item2.estatus === 'Atrasada' ? 'container-bar-gantt animatedTimeline3' : 'container-bar-gantt'" *ngFor="let item2 of item.actividades" [style.background-color]="item2.color" cdkDrag (mouseover)="item2.viewTooltip=true" (mouseout)="item2.viewTooltip=false">
+            <span class="numeroOsBar">{{item2.numero}}</span>
+            <span class="bar-gantt" [style.width]="item2.avance+'%'" [style.background-color]="item2.colorAvance"></span>
+    
+            <div [ngClass]="item2.viewTooltip ? 'tootlip-gantt-view' : 'tootlip-gantt'" class="tootlip-gantt">
+              <span [style.font-weight]="'600'">{{item2.name}}</span>
+              <span [style.color]="item2.color" [style.font-weight]="'600'">{{item2.estatus}}</span>
+              <span>{{item2.fechaInicio }} - {{item2.fechaFin }}</span>
+              <span>Avance: {{item2.avance + '%'}}</span>
+            </div>
+    
+          </div>
+    
+          
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="scrollContainer" *ngIf="!isDragAndDrop">
+    <div id="containerGantt" class="container-gantt">
+      <div class="listItems" *ngFor="let item of items; let i = index"  >
+        
+        <div class="nameItem">
+          <div class="icon-div-user-foto-icon">
+            <img [src]="item.urlFotografia !== null ? item.urlFotografia : user_photo_default " [style.border-radius]="'100%'" width="100%" height="100%" alt="photo_user">
+          </div>
+          <div class="container-name">
+            {{item.name}} <span class="nameResponsable">{{item.responsable}}</span>
+          </div>
+        </div>
+        <div class="bar-gantt-main" [style.min-width]="((item.actividades.length + 1) * 150) + 'px'" [id]="'list-'+(i+1)" (click)="selectedBar(item)">
+          <div [ngClass]="item2.estatus === 'Atrasada' ? 'container-bar-gantt animatedTimeline3' : 'container-bar-gantt'" *ngFor="let item2 of item.actividades; let j = index" [style.background-color]="item2.color" (mouseover)="item2.viewTooltip=true" (mouseout)="item2.viewTooltip=false">
+            <span class="numeroOsBar">{{item2.numero}}</span>
+            <span class="bar-gantt" [style.width]="item2.avance+'%'" [style.background-color]="item2.colorAvance"></span>
+    
+            <div [ngClass]="item2.viewTooltip ? 'tootlip-gantt-view' : 'tootlip-gantt'" [style.right]="j === 0 ? 'auto' : null" [style.bottom]="i < 4 ? 'auto' : null" [style.top]="i < 4 ? '30px' : null" [style.left]="j === 0 ? '0' : null" class="tootlip-gantt">
+              <span [style.font-weight]="'600'">{{item2.name}}</span>
+              <span [style.color]="item2.color" [style.font-weight]="'600'">{{item2.estatus}}</span>
+              <span>{{item2.fechaInicio }} - {{item2.fechaFin }}</span>
+              <span>Avance: {{item2.avance + '%'}}</span>
+            </div>
+    
+          </div>
+    
+          
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
